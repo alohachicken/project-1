@@ -63,11 +63,11 @@ project-1/
 ```bash
 git clone https://github.com/YOUR_USERNAME/mini-marketplace.git
 cd mini-marketplace
-2️⃣ Install dependencies
+### 2️⃣ Install dependencies
 bash
 Copy code
 npm install
-3️⃣ Create a .env file
+### 3️⃣ Create a .env file
 env
 Copy code
 PORT=3000
@@ -75,7 +75,7 @@ MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 ⚠️ .env is not included in the repo for security reasons.
 
-4️⃣ Run the server
+### 4️⃣ Run the server
 bash
 Copy code
 node index.js
@@ -86,7 +86,7 @@ Copy code
 http://localhost:3000
 
 
-🔐 Authentication Flow
+## 🔐 Authentication Flow
 
 JWT token is issued on login
 
@@ -98,7 +98,7 @@ Backend validates ownership before allowing deletes
 
 
 
-📸 Marketplace Logic
+## 📸 Marketplace Logic
 
 Products are linked to the user via owner
 
