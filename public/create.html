@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Product</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Create Product</h1>
+    <p id="msg"></p>
+
+    <input id="title" placeholder="Title" />
+    <input id="price" type="number" placeholder="Price" />
+    <input id="image" type="file" accept="image/*" />
+
+    <button onclick="createProduct()">Create</button>
+    <button onclick="goBack()">Back to Marketplace</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const API = "http://localhost:3000";
+    const token = localStorage.getItem("token");
+    if (!token) window.location.href = "/";
+
+    function goBack() {
+      window.location.href = "/main.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("token");
+      window.location.href = "/";
+    }
+
+    async function createProduct() {
+      const title = document.getElementById("title").value;
+      const price = document.getElementById("price").value;
+      const image = document.getElementById("image").files[0];
+
+      if (!image) {
+        document.getElementById("msg").innerText = "❌ Please select an image";
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("price", price);
+      formData.append("image", image);
+
+      const res = await fetch(`${API}/api/products`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        document.getElementById("msg").innerText = "✅ Product created!";
+        window.location.href = "/main.html";
+      } else {
+        document.getElementById("msg").innerText = data.error || "❌ Failed";
+      }
+    }
+  </script>
+</body>
+</html>

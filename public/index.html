@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mini Marketplace Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>🛒 Mini Marketplace</h1>
+    <hr />
+
+    <h2>Register</h2>
+    <input id="reg-username" placeholder="Username" />
+    <br />
+    <input id="reg-email" placeholder="Email" />
+    <br />
+    <input id="reg-password" type="password" placeholder="Password" />
+    <br />
+    <button onclick="register()">Register</button>
+    <p id="register-msg"></p>
+
+    <section>
+      <h2>Login</h2>
+      <div class="row">
+        <input id="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Password" />
+        <button onclick="login()">Login</button>
+      </div>
+      <p id="loginStatus"></p>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
